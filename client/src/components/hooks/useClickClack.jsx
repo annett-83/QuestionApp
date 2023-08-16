@@ -4,7 +4,7 @@ const useClickClack = () => {
     const [checked,setChecked] = useState(false);
 
     const onClick=()=>{
-        console.log("Custom Hook clck");
+        // console.log("Custom Hook clck");
         setChecked(!checked);
 
     };

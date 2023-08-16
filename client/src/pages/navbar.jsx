@@ -12,7 +12,7 @@ import { ColorRing } from "../../node_modules/react-loader-spinner/dist/index";
 import logo from "../components/img/pc7rLGMKi_small.jpg";
 import { actions as storeActions } from "../store/sagas";
 import { states as currentUserStates } from "../store/userSlice";
-import useClickClack from "./hooks/useClickClack.jsx";
+import useClickClack from "../components/hooks/useClickClack.jsx";
 
 function QuestionAppNavbar() {
     const navigate = useNavigate();

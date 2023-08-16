@@ -208,7 +208,7 @@ const CreateAndViewQuestionPage = () => {
                         </Typography>}</span>
 
                 }
-                {questionData.canDelete?  <Button
+                {questionData.canDelete?  <Button type="button" className="btn btn-danger btn-lg active btn btn-primary  "
                     variant="overline"
                     display="block"
                     onClick={()=>onDelete(questionData._id)}
