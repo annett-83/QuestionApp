@@ -1,19 +1,21 @@
-import { call, put, takeLatest, delay, select } from "redux-saga/effects";
-import userService from "../services/user.service";
-import {
-    setTokens,
-    removeAuthData,
-    hasValidToken,
-} from "../services/localStorage.service";
-import subjectService from "../services/subjectService";
-import questionService from "../services/questionService";
-import teacherService from "../services/teacherService";
 import { createAction } from "@reduxjs/toolkit";
-import subjectSlice from "./subjectSlice";
-import userSlice from "./userSlice";
-import teacherSlice from "./teacherSlice";
-import errorSlice from "./errorSlice";
+import { call, delay, put, select, takeLatest } from "redux-saga/effects";
+
+import {
+    hasValidToken,
+    removeAuthData,
+    setTokens,
+} from "../services/localStorage.service";
+import questionService from "../services/questionService";
+import subjectService from "../services/subjectService";
+import teacherService from "../services/teacherService";
+import userService from "../services/user.service";
 import { states as currentUserStates } from "../store/userSlice";
+
+import errorSlice from "./errorSlice";
+import subjectSlice from "./subjectSlice";
+import teacherSlice from "./teacherSlice";
+import userSlice from "./userSlice";
 /* Define Actions */
 export const actions = {
     initialize_store: createAction("INITIALIZE_STORE"),
@@ -31,11 +33,9 @@ export const actions = {
 
 function* initialize_store() {
     yield put(actions.userIndependentData_fetchCyclic_data());
-    yield delay(3000);
-    yield put(actions.userIndependentData_fetchCyclic_data());
     yield put(actions.userDependentData_fetchCyclic_data());
 }
-function* currentuser_set_NewToken(action) {
+function* currentuser_set_NewToken(action) { // в процессе разработки
     yield put(errorSlice.actions.resetErrror({ context: action.type }));
     try {
         yield put(userSlice.actions.setLoading());
@@ -71,7 +71,7 @@ function* userIndependentData_fetchCyclic_data() {
         } catch (error) {
             console.log("teachererror", error);
         }
-        yield delay(100000);
+        yield delay(1000);
     }
 }
 

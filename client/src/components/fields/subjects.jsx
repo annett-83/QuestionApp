@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import Subject from "./subject.jsx";
 const Subjects = ({ subjects }) => {
     return subjects.map((subject) => (

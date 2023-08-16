@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { handleObjectArrays } from "./helper/helper";
 
 const initialState = { data: [], isLoading: true };

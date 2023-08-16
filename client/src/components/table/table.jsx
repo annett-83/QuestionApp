@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import TableBody from "./tableBody.jsx";
 import TableHeader from "./tableHeader.jsx";
 

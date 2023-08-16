@@ -1,25 +1,26 @@
 import React, { useEffect } from "react";
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 import Dropdown from "react-bootstrap/Dropdown";
-import { useSelector, useDispatch } from "react-redux";
+import Form from "react-bootstrap/Form";
+import Navbar from "react-bootstrap/Navbar";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import logo from "../components/img/pc7rLGMKi_small.jpg";
-import { states as currentUserStates } from "../store/userSlice";
-import { actions as storeActions } from "../store/sagas";
-// import { shallowEqual } from "../../node_modules/shallow-equal/dist/index";
 import _ from "lodash";
+
 import { ColorRing } from "../../node_modules/react-loader-spinner/dist/index";
+import logo from "../components/img/pc7rLGMKi_small.jpg";
+import { actions as storeActions } from "../store/sagas";
+import { states as currentUserStates } from "../store/userSlice";
+import useClickClack from "./hooks/useClickClack.jsx";
 
 function QuestionAppNavbar() {
     const navigate = useNavigate();
     const userData = useSelector(currentUserStates.currentUserData, _.isEqual);
     const isLoadingUserData = useSelector(currentUserStates.isLoadingUserData);
     const dispatch = useDispatch();
+    const [checked, onClick] = useClickClack();
     useEffect(() => {
-        console.log("Navigated Home");
         navigate("/");
     }, [userData, isLoadingUserData]);
 
@@ -39,9 +40,17 @@ function QuestionAppNavbar() {
                     <Button
                         type="button"
                         variant="outline-primary"
+                        onClick={onClick}
+                    >
+                        {checked ? <span>yes</span> : <span>no</span>}
+                    </Button>
+
+                    <Button
+                        type="button"
+                        variant="outline-primary"
                         onClick={() => navigate("/About")}
                     >
-            О сайте
+                        О сайте
                     </Button>
 
                     {isLoadingUserData ? (
@@ -52,7 +61,13 @@ function QuestionAppNavbar() {
                             ariaLabel="blocks-loading"
                             wrapperStyle={{}}
                             wrapperClass="blocks-wrapper"
-                            colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+                            colors={[
+                                "#e15b64",
+                                "#f47e60",
+                                "#f8b26a",
+                                "#abbd81",
+                                "#849b87",
+                            ]}
                         />
                     ) : (
                         <div className="flex">
@@ -63,9 +78,11 @@ function QuestionAppNavbar() {
                                             <Button
                                                 type="button"
                                                 variant="outline-primary"
-                                                onClick={() => navigate("/askYourQuestion")}
+                                                onClick={() =>
+                                                    navigate("/askYourQuestion")
+                                                }
                                             >
-                        Задай свой вопрос
+                                                Задай свой вопрос
                                             </Button>
                                         ) : (
                                             <div />
@@ -78,14 +95,24 @@ function QuestionAppNavbar() {
                                                 id="dropdown-basic"
                                             >
                                                 {userData.name}
-                                                {userData.isTeacher ? "-Учитель" : "-Ученик"}
+                                                {userData.isTeacher
+                                                    ? "-Учитель"
+                                                    : "-Ученик"}
                                             </Dropdown.Toggle>
                                             <Dropdown.Menu>
-                                                <Dropdown.Item onClick={() => navigate("/profile")}>
-                          Профиль
+                                                <Dropdown.Item
+                                                    onClick={() =>
+                                                        navigate("/profile")
+                                                    }
+                                                >
+                                                    Профиль
                                                 </Dropdown.Item>
-                                                <Dropdown.Item onClick={logout}>Выйти</Dropdown.Item>
-                                                <Dropdown.Item>Пополнить баланс</Dropdown.Item>
+                                                <Dropdown.Item onClick={logout}>
+                                                    Выйти
+                                                </Dropdown.Item>
+                                                <Dropdown.Item>
+                                                    Пополнить баланс
+                                                </Dropdown.Item>
                                             </Dropdown.Menu>
                                         </Dropdown>
                                     </Form>
@@ -97,14 +124,14 @@ function QuestionAppNavbar() {
                                         variant="outline-primary"
                                         onClick={() => navigate("/login")}
                                     >
-                    Войти
+                                        Войти
                                     </Button>
                                     <Button
                                         type="button"
                                         variant="outline-primary"
                                         onClick={() => navigate("/signup")}
                                     >
-                    Регистрироваться
+                                        Регистрироваться
                                     </Button>
                                 </div>
                             )}

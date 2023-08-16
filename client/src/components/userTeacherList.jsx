@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { shallowEqual, useSelector } from "react-redux";
+import _ from "lodash";
 import PropTypes from "prop-types";
-import Pagination from "./pagination.jsx";
-import { paginate } from "./utils/paginate";
-import GroupList from "./groupList.jsx";
+
+import SearchStatusTeacher from "./teacherPage/searchStatusTeacher.jsx";
 // import api from "../../../api";
 import TeacherTable from "./teacherPage/teacherTable.jsx";
-import _ from "lodash";
-import SearchStatusTeacher from "./teacherPage/searchStatusTeacher.jsx";
-import { useSelector, shallowEqual } from "react-redux";
+import { paginate } from "./utils/paginate";
+import GroupList from "./groupList.jsx";
+import Pagination from "./pagination.jsx";
 
 const UserTeacherList = () => {
     const pageSize = 5;

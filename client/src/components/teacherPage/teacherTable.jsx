@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+
 import Subjects from "../fields/subjects.jsx";
 import Table from "../table/table.jsx";
-import { Link } from "react-router-dom";
 
 const TeacherTable = ({
     userTeachers,

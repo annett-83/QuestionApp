@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+import QuestionAnswerState from "./fields/questionAnswerState.jsx";
 import Subject from "./fields/subject.jsx";
 import Table from "./table/table.jsx";
-import QuestionAnswerState from "./fields/questionAnswerState.jsx";
 
 const QuestionsTable = ({
     questions,

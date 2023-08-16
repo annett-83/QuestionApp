@@ -1,10 +1,11 @@
 import * as React from "react";
+import {
+    CardContent,
+    Typography
+} from "@mui/material";
+
 import AppLayersSVG from "../components/img/AppLayers.svg";
 import RelationSVG from "../components/img/svgrelation.svg";
-import {
-    Typography,
-    CardContent
-} from "@mui/material";
 
 const AboutThis = () => {
     return (

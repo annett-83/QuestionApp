@@ -1,11 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
-import UserTeacherCard from "../components/teacherPage/userTeacherCard.jsx";
-import SubjectsCard from "../components/teacherPage/subjectsCard.jsx";
-import { useParams } from "react-router-dom";
-import NumberOfQuestionsCard from "../components/teacherPage/numberOfQuestionsCard.jsx";
-import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { createSelector } from "@reduxjs/toolkit";
+import PropTypes from "prop-types";
+
+import NumberOfQuestionsCard from "../components/teacherPage/numberOfQuestionsCard.jsx";
+import SubjectsCard from "../components/teacherPage/subjectsCard.jsx";
+import UserTeacherCard from "../components/teacherPage/userTeacherCard.jsx";
 
 const UserTeacherPage = () => {
     const params = useParams();

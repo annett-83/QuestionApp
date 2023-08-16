@@ -1,7 +1,7 @@
+import { transformAxiosError } from "./helper/helper";
 import httpService from "./http.service";
 import httpAuth from "./httpAuth.service";
 import localStorageService from "./localStorage.service";
-import { transformAxiosError } from "./helper/helper";
 
 const userEndpoint = "user/";
 const authEndpoint = "auth/";

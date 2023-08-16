@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { handleSingleObject, handleObjectArrays } from "./helper/helper";
+
+import { handleObjectArrays, handleSingleObject } from "./helper/helper";
 const initialState = { data: { userData: undefined, questionData: [] }, isLoadingUserData: false, isLoadingQuestionData: false };
 
 const userSlice = createSlice({

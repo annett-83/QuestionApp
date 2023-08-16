@@ -1,20 +1,21 @@
-import { useEffect, useState, React } from "react";
+import { React, useEffect, useState } from "react";
 import { Form } from "react-final-form";
-import { TextField, Checkboxes, Select } from "mui-rff";
-import userService from "../services/user.service";
-import { FORM_ERROR } from "final-form";
-import { useSelector, useDispatch } from "react-redux";
-import { actions as storeActions } from "../store/sagas";
-import { states as currentUserStates } from "../store/userSlice";
-import _ from "lodash";
+import { useDispatch, useSelector } from "react-redux";
 import {
-    Typography,
-    Paper,
-    Grid,
     Button,
     CssBaseline,
-    MenuItem
+    Grid,
+    MenuItem,
+    Paper,
+    Typography
 } from "@mui/material";
+import { FORM_ERROR } from "final-form";
+import _ from "lodash";
+import { Checkboxes, Select, TextField } from "mui-rff";
+
+import userService from "../services/user.service";
+import { actions as storeActions } from "../store/sagas";
+import { states as currentUserStates } from "../store/userSlice";
 
 const CreatEditUserProfilePage = () => {
     const [formInitialValues, setFormInitialValues] = useState();
@@ -173,7 +174,7 @@ const CreatEditUserProfilePage = () => {
     const dispatch = useDispatch();
 
     const onSubmit = async (values) => {
-        if (formInitialValues) {
+        if (formInitialValues) { //update
             try {
                 const res = await userService.updateUserData(values);
                 console.log(res);
@@ -189,7 +190,7 @@ const CreatEditUserProfilePage = () => {
                 }
             }
         } else {
-            try {
+            try { //create
                 const { data } = await userService.create(values);
                 dispatch(storeActions.currentuser_set_newToken(data));
             } catch (error) {
@@ -288,7 +289,7 @@ const CreatEditUserProfilePage = () => {
                                 </Grid>
                             </Grid>
                         </Paper>
-                        {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+                        {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */} 
                     </form>
                 )}
             />

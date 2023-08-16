@@ -1,6 +1,7 @@
 import React from "react";
-import Subjects from "../fields/subjects.jsx";
 import PropTypes from "prop-types";
+
+import Subjects from "../fields/subjects.jsx";
 
 const SubjectsCard = ({ data }) => {
     return (

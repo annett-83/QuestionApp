@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers } from "redux";
 import createSagaMiddleware from "redux-saga";
+
+import errorSlice from "./errorSlice";
 import mySaga from "./sagas";
 import subjectSlice from "./subjectSlice";
-import userSlice from "./userSlice";
 import teacherSlice from "./teacherSlice";
-import errorSlice from "./errorSlice";
-import { combineReducers } from "redux";
+import userSlice from "./userSlice";
 
 // Create the saga middleware
 const sagaMiddleware = createSagaMiddleware();

@@ -4,6 +4,26 @@ const auth = require("../middleware/auth.middleware");
 const User = require("../models/User");
 const Question = require("../models/Question");
 const _ = require("lodash");
+
+router.delete("/:questionId", auth, async (req, res) => {
+    try {
+        const callUser = await User.findById(req.user._id);
+        const { questionId } = req.params;
+        const question = await Question.findById(questionId);
+        if (callUser._id.toString() === question.user.toString() && !question.answer) {
+            const newQuestion = await Question.findByIdAndDelete(questionId);
+            res.status(201).send({});
+        } else {
+            res.status(401).json({ message: "Unauthorized" });
+        }
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({
+            message: "На сервере произошла ошибка. Попробуйте позже",
+        });
+    }
+});
+
 router.post("/new", auth, async (req, res) => {
     try {
         const callUser = await User.findById(req.user._id);
@@ -67,15 +87,21 @@ router.get("/", auth, async (req, res) => {
                     question.answer.user.toString() === callUser._id.toString();
             }
 
+            question.canDelete =
+                question.isOpen && question.user._id.toString() === callUser._id.toString();
+
             if (!question.canViewAnswer && !question.isOpen) {
                 delete question.answer.content;
             }
+
             lquestion._doc = {
                 ...question,
             };
+
+          
+
             return lquestion;
         });
-
         res.send(nlist);
     } catch (e) {
         console.log(e);

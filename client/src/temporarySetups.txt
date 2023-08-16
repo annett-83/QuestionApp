@@ -1,0 +1,2 @@
+"apiEndpoint": "http://80.249.147.4/api/"
+"apiEndpoint": "http://localhost:8080/api/"

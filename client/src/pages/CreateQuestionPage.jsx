@@ -1,18 +1,19 @@
 import React from "react";
 import { Form } from "react-final-form";
-import { TextField, Select } from "mui-rff";
-import { FORM_ERROR } from "final-form";
 import { useSelector } from "react-redux";
-import questionService from "../services/questionService";
 import { useNavigate } from "react-router-dom";
 import {
-    Typography,
-    Paper,
-    Grid,
     Button,
     CssBaseline,
-    MenuItem
+    Grid,
+    MenuItem,
+    Paper,
+    Typography
 } from "@mui/material";
+import { FORM_ERROR } from "final-form";
+import { Select, TextField } from "mui-rff";
+
+import questionService from "../services/questionService";
 
 const CreateQuestionPage = () => {
     const navigate = useNavigate();
@@ -34,7 +35,7 @@ const CreateQuestionPage = () => {
             } else {
                 const n = Number(values.price);
                 if (isNaN(n)) {
-                    errors.price = "Enter a valid amount"; // не работает?
+                    errors.price = "Ввидите число"; // не работает?
                 } else {
                     if (n < 50) {
                         errors.price = "Цена должна быть минимум 50 рублей";
@@ -105,7 +106,7 @@ const CreateQuestionPage = () => {
                 await questionService.create(values);
                 navigate(-1);
             } catch (error) {
-                return { [FORM_ERROR]: "Upload Failed" };
+                return { [FORM_ERROR]: "Не загрузилось" };
             }
         };
 

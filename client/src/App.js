@@ -1,19 +1,21 @@
-import { useEffect, React } from "react";
-import "./App.css";
-import CreatEditUserProfilePage from "./pages/CreatEditUserProfilePage.jsx";
-import LogInPage from "./pages/LogInPage.jsx";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import QuestionAppNavbar from "./pages/navbar.jsx";
-import CreateQuestionPage from "./pages/CreateQuestionPage.jsx";
-import CreateAndViewQuestionPage from "./pages/CreateAndViewQuestionPage.jsx";
+import { React, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import UserTeacherPage from "./pages/userTeacherPage.jsx";
-import { actions as storeActions } from "./store/sagas";
-import AboutThis from "./pages/AboutThis.jsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
     CssBaseline
 } from "@mui/material";
+
+import AboutThis from "./pages/AboutThis.jsx";
+import CreateAndViewQuestionPage from "./pages/CreateAndViewQuestionPage.jsx";
+import CreatEditUserProfilePage from "./pages/CreatEditUserProfilePage.jsx";
+import CreateQuestionPage from "./pages/CreateQuestionPage.jsx";
+import Home from "./pages/Home.jsx";
+import LogInPage from "./pages/LogInPage.jsx";
+import QuestionAppNavbar from "./pages/navbar.jsx";
+import UserTeacherPage from "./pages/userTeacherPage.jsx";
+import { actions as storeActions } from "./store/sagas";
+
+import "./App.css";
 export const App = () => {
     const dispatch = useDispatch();
 
